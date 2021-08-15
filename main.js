@@ -40,9 +40,12 @@ const updateTodo = () => {
     .catch(err => console.error(err));
 }
 
-// DELETE REQUEST
-function removeTodo() {
-  console.log('DELETE Request');
+//! DELETE REQUEST
+const removeTodo = () => {
+  axios
+  .delete('https://jsonplaceholder.typicode.com/todos/1')
+  .then(res => showOutput(res))
+  .catch(err => console.error(err));
 }
 
 // SIMULTANEOUS DATA
