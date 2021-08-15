@@ -48,9 +48,15 @@ const removeTodo = () => {
   .catch(err => console.error(err));
 }
 
-// SIMULTANEOUS DATA
-function getData() {
-  console.log('Simultaneous Request');
+//! SIMULTANEOUS DATA
+const getData = () => {
+  axios
+    .all([
+      axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5'),
+      axios.get('https://jsonplaceholder.typicode.com/posts?_limit=5')
+    ])
+    .then(axios.spread((todos, posts) => showOutput(posts)))
+    .catch(err => console.error(err))
 }
 
 // CUSTOM HEADERS
