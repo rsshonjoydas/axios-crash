@@ -34,6 +34,17 @@ const getTodos = () => {
   .catch(err => console.error(err))
 }
 
+
+// ! get data with axios
+const getTryCatch = async () => {
+  try {
+    const res = await axios.get('data.txt');
+    showOutput(res);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //! POST REQUEST
 const addTodo = () => {
   axios
@@ -223,6 +234,7 @@ function showOutput(res) {
 
 // Event listeners
 document.getElementById('getTxt').addEventListener('click', makeRequest);
+document.getElementById('asyncAwait').addEventListener('click', getTryCatch);
 document.getElementById('get').addEventListener('click', getTodos);
 document.getElementById('post').addEventListener('click', addTodo);
 document.getElementById('update').addEventListener('click', updateTodo);
