@@ -2,6 +2,18 @@
 axios.defaults.headers.common['X-Auth-Token'] =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 
+// ! fetch local text file
+const makeRequest = () => {
+  console.log('button Clicked');
+  config = {
+    method: 'get',
+    url: 'data.txt',
+  };
+  axios(config).then((res) => {
+    showOutput(res);
+  });
+};
+
 //! GET REQUEST
 const getTodos = () => {
     // axios({
@@ -210,6 +222,7 @@ function showOutput(res) {
 }
 
 // Event listeners
+document.getElementById('getTxt').addEventListener('click', makeRequest);
 document.getElementById('get').addEventListener('click', getTodos);
 document.getElementById('post').addEventListener('click', addTodo);
 document.getElementById('update').addEventListener('click', updateTodo);
